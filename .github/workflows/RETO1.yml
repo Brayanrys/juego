@@ -1,0 +1,30 @@
+name: Crear y borrar archivos .txt
+on:
+  push:
+    branches:
+      - main  # Cambia "main" por la rama en la que deseas activar el flujo de trabajo
+
+jobs:
+  create-and-delete-file:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Clonar repositorio
+      uses: actions/checkout@v2
+    
+    - name: Crear archivo .txt
+      run: |
+        echo "Contenido del archivo" > archivo.txt
+        git config --global user.name "GitHub Actions"
+        git config --global user.email "actions@github.com"
+        git add archivo.txt
+        git commit -m "Crear archivo.txt"
+        git push
+    
+    - name: Borrar archivo .txt
+      run: |
+        git config --global user.name "GitHub Actions"
+        git config --global user.email "actions@github.com"
+        git rm archivo.txt
+        git commit -m "Borrar archivo.txt"
+        git push
