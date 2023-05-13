@@ -1,0 +1,27 @@
+name: Insertar registros en MySQL
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  insert-records:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout del repositorio
+      uses: actions/checkout@v2
+      
+    - name: Configurar entorno de MySQL
+      uses: mysql-action/setup-mysql@v1
+      with:
+        mysql-version: '8.0'
+        mysql-hostname: 'cualquiera123456.000webhostapp.com'
+        mysql-port: 3306
+        mysql-username: ${{ secrets.prueba123456 }}
+        mysql-password: ${{ secrets.Conprueba1* }}
+    
+    - name: Insertar registros en la base de datos
+      run: |
+        mysql -h cualquiera123456.000webhostapp.com -P 3306 -u ${{ secrets.prueba123456 }} -p${{ secrets.Conprueba1* }} prueba < insert_records.sql
