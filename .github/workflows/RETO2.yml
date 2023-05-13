@@ -13,7 +13,7 @@ jobs:
     - name: Checkout del repositorio
       uses: actions/checkout@v2
       
-    - name: configurar entorno de MySQL
+    - name: Configurar entorno de MySQL
       uses: mysql-action/setup-mysql@v1
       with:
         mysql-version: '8.0'
